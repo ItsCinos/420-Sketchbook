@@ -16,7 +16,10 @@ public class Chunk3DController : MonoBehaviour
     [Tooltip ("Density threshold (0 - 1)")]
     public float threshold = 0.5f;
 
+    [Tooltip("How much to scale the noise")]
     public float zoom = 10;
+
+    private bool _shouldRegen = false;
 
     private void Start() {
         GenerateVoxels();
@@ -25,7 +28,16 @@ public class Chunk3DController : MonoBehaviour
     private void OnValidate()
     {
         if (!Application.isPlaying) return;
-        GenerateVoxels();
+        _shouldRegen = true;
+    }
+
+    private void Update()
+    {
+        if(_shouldRegen)
+        {
+            _shouldRegen = false;
+            GenerateVoxels();
+        }
     }
 
     private void GenerateVoxels()
