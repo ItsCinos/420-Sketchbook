@@ -10,16 +10,16 @@ public class PlayerMovement : MonoBehaviour
     //public float mouseSensitivityY = 10;
 
     private CharacterController pawn;
-    private Camera cam;
+    //private Camera cam;
 
-    float cameraPitch = 0;
+    //float cameraPitch = 0;
 
     void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         pawn = GetComponent<CharacterController>();
-        cam = GetComponentInChildren<Camera>();
+        //cam = GetComponentInChildren<Camera>();
     }
 
     
