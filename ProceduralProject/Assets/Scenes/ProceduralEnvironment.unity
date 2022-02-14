@@ -395,8 +395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSky: {fileID: 1404594320732370774, guid: 25b2051495a92834f92db1259d1d5f93, type: 3}
-  citySize: 14
-  spaceBetweenRooms: 29
+  citySize: 15
+  spaceBetwenBlocks: 35
 --- !u!1 &1156786046
 GameObject:
   m_ObjectHideFlags: 0

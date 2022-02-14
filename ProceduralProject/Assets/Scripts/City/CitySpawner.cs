@@ -10,8 +10,8 @@ public class CitySpawner : MonoBehaviour
     [Range(4, 25)]
     public int citySize = 10;
 
-    [Range(1, 100)]
-    public int spaceBetweenRooms = 5;
+    [Range(25, 50)]
+    public int spaceBetwenBlocks = 25;
 
 
     void Start()
@@ -30,7 +30,7 @@ public class CitySpawner : MonoBehaviour
 
                 if (blocks[x, z] > 0) continue; // skip room
 
-                Vector3 pos = new Vector3(x, 0, z) * spaceBetweenRooms;
+                Vector3 pos = new Vector3(x, 0, z) * spaceBetwenBlocks;
                 CityBlock newBlock = Instantiate(prefabSky, pos, Quaternion.identity);
 
                 newBlock.InitBlock((BlockType)blocks[x, z]);

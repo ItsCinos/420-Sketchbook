@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum BranchingType
+public enum BranchingTypeP3
 {
     Random,
     Opposite,
@@ -13,7 +13,8 @@ public enum BranchingType
     WhorledThree
 }
 
-public class InstanceCollection {
+public class InstanceCollectionP3
+{
 
     public List<CombineInstance> branchInstances = new List<CombineInstance>();
     public List<CombineInstance> leafInstances = new List<CombineInstance>();
@@ -47,10 +48,9 @@ public class InstanceCollection {
     }
 }
 
-
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
-public class PlantDemo2 : MonoBehaviour
+public class Plant3 : MonoBehaviour
 {
     [Range(0, 100000000)]
     public int seed = 0;
@@ -80,28 +80,34 @@ public class PlantDemo2 : MonoBehaviour
     private System.Random randGenerator;
 
 
-    private float Rand() {
-        return (float) randGenerator.NextDouble();
+    private float Rand()
+    {
+        return (float)randGenerator.NextDouble();
     }
-    private float Rand(float min, float max) {
+    private float Rand(float min, float max)
+    {
         return Rand() * (max - min) + min;
     }
-    private float RandBell(float min, float max) {        
+    private float RandBell(float min, float max)
+    {
         min /= 2;
         max /= 2;
 
         return Rand(min, max) + Rand(min, max);
     }
-    private bool RandBool() {
+    private bool RandBool()
+    {
         return (Rand() >= .5f);
     }
 
 
-    void Start() {
+    void Start()
+    {
         Build();
     }
 
-    private void OnValidate() {
+    private void OnValidate()
+    {
         Build();
     }
 
@@ -110,20 +116,20 @@ public class PlantDemo2 : MonoBehaviour
         randGenerator = new System.Random(seed);
 
         // 1. Making storage for instances:
-        InstanceCollection instances = new InstanceCollection();
+        InstanceCollectionP3 instances = new InstanceCollectionP3();
 
         // 2. spawn the instances
 
         Grow(instances, Vector3.zero, Quaternion.identity, new Vector3(.25f, 1, .25f), iterations);
 
         // 3. combining the instances together:
-        
+
         MeshFilter meshFilter = GetComponent<MeshFilter>();
         if (meshFilter) meshFilter.mesh = instances.MakeMultiMesh();
 
     }
 
-    void Grow(InstanceCollection instances, Vector3 pos, Quaternion rot, Vector3 scale, int max, int num = 0, float nodeSpin = 0)
+    void Grow(InstanceCollectionP3 instances, Vector3 pos, Quaternion rot, Vector3 scale, int max, int num = 0, float nodeSpin = 0)
     {
         if (num < 0) num = 0;
         if (num >= max) return; // stop recursion!
@@ -156,8 +162,8 @@ public class PlantDemo2 : MonoBehaviour
 
         { // temp scope
             Quaternion randRot = rot * Quaternion.Euler(turnDegrees, twistDegrees, 0);
-            Quaternion upRot = Quaternion.RotateTowards(rot, Quaternion.identity, 45);
-            Quaternion newRot = Quaternion.Lerp(randRot, upRot, .5f);
+            Quaternion upRot = Quaternion.RotateTowards(rot, Quaternion.identity, 55);
+            Quaternion newRot = Quaternion.Lerp(randRot, upRot, .35f);
 
             Grow(instances, endPoint, newRot, scale * .9f, max, num, nodeSpin);
         }
@@ -202,7 +208,7 @@ public class PlantDemo2 : MonoBehaviour
                 float spin = nodeSpin + degreesBetweenNodes * i;
                 Quaternion newRot = rot * Quaternion.Euler(lean, spin, 0);
 
-                float s = RandBell(.5f, .95f);
+                float s = RandBell(.25f, .95f);
 
                 Grow(instances, endPoint, newRot, scale * s, max, num, 90);
             }
