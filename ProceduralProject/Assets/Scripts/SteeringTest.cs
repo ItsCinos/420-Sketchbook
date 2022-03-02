@@ -9,29 +9,34 @@ public class SteeringTest : MonoBehaviour
     static float MAX_SPEED = 10;
     static List<SteeringTest> agents = new List<SteeringTest>();
 
-    Vector3 position;
-    Vector3 force;
-    Vector3 velocity;
+    //private Vector3 position;
+    private Vector3 force;
+    private Vector3 velocity;
 
     float mass;
 
     public SteeringTarget target;
 
-    Vector3 targetPos;
+    private Vector3 targetPos;
+
+    private Vector3 offset;
 
     void Start()
     {
-        targetPos = target.transform.position;
-        position = transform.position;
-        mass = Random.Range(10, 100);
+        //position = transform.position;
+        mass = Random.Range(1, 10);
 
         agents.Add(this);
+
+        offset = Random.onUnitSphere;
     }
 
 
     void Update()
     {
-        
+        offset = Quaternion.Euler(0, 0, 90 * Time.deltaTime) * offset;
+
+        targetPos = target.transform.position + offset;
         DoSteeringForce();
         DoEuler();
     }
@@ -41,13 +46,14 @@ public class SteeringTest : MonoBehaviour
         // find desired velocity
         // desired velocity = clamp(target position - current position)
 
-        Vector3 desiredVelocity = targetPos - position;
+        Vector3 desiredVelocity = targetPos - transform.position;
         //desiredVelocity.sqrMagnitude(MAX_SPEED);
 
         // find steering force
-        // steering force = desired velocity - current velocity
 
+        // steering force = desired velocity - current velocity
         Vector3 steeringForce = desiredVelocity - velocity;
+
         //steeringForce.limit(MAX_FORCE);
 
         force = force + steeringForce;
@@ -56,7 +62,7 @@ public class SteeringTest : MonoBehaviour
     {
         Vector3 acceleration = force / mass;
         velocity += acceleration * Time.deltaTime;
-        this.position += velocity * Time.deltaTime;
+        transform.position += velocity * Time.deltaTime;
         force *= 0;
     }
 }
