@@ -23,36 +23,40 @@ public static class Pathfinder
 
         public List<Node> neighbors = new List<Node>();
 
-        private Node _parent;
-
-        public Node parent
+        public Node parent { get; private set; }
+        
+        public void UpdateParentAndG(Node parent, float extraG = 0)
         {
-            get {
-                return _parent;
-            }
-            set {
-                _parent = value;
-                if (_parent != null) {
-                    G = _parent.G + moveCost;
-                } else {
-                    G = 0;
-                }
+            this.parent = parent;
+            if(parent != null)
+            {
+                G = parent.G + moveCost + extraG;
+            } else
+            {
+                G = extraG;
             }
         }
 
+        // Makes an educated guess as to how far we are from end
         public void DoHeuristic(Node end)
         {
+            // euclidean heuristic:
             Vector3 d = end.position - this.position;
             H = d.magnitude;
+
+            // manhattan heuristic:
+            // H = d.x + d.y + d.z;
         }
 
     }
     public static List<Node> Solve(Node start, Node end)
     {
-        List<Node> open = new List<Node>();
-        List<Node> closed = new List<Node>();
+        if (start == null || end == null) return new List<Node>();        
+        
+        List<Node> open = new List<Node>(); // all the nodes that have been discovered, but not 'scanned'
+        List<Node> closed = new List<Node>(); // these nodes are 'scanned'
 
-        start.parent = null;
+        start.UpdateParentAndG( null );
         open.Add(start);
 
         // 1. travel from start to end
@@ -66,7 +70,7 @@ public static class Pathfinder
                     bestF = n.F;
                 }
             }
-
+            // if this node is the end, stop looping
             if(current == end) {
                 break;
             }
@@ -76,8 +80,13 @@ public static class Pathfinder
             {
                 if (!closed.Contains(neighbor)) { // node not in CLOSED
                     if (!open.Contains(neighbor)) { // node not in OPEN
+                        
                         open.Add(neighbor);
-                        neighbor.parent = current;
+
+                        float dis = (neighbor.position - current.position).magnitude;
+
+                        neighbor.UpdateParentAndG(current, dis); // set child's 'parent' & 'G'
+
                         if(neighbor == end) {
                             isDone = true;
                         }
@@ -89,13 +98,18 @@ public static class Pathfinder
 
                         // if this path to neighbor has lower G
                         // than previous path to neighbor
+                        float dis = (neighbor.position - current.position).magnitude;
                         if(current.G + neighbor.moveCost < neighbor.G)
                         {
-                            neighbor.parent = current;
+                            neighbor.UpdateParentAndG(current, 0);
                         }
                     }
                 }
             }
+
+            closed.Add(current);
+            open.Remove(current);
+
             if (isDone) break;
         }
 
