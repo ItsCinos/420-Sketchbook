@@ -28,11 +28,9 @@ public static class Pathfinder
         public void UpdateParentAndG(Node parent, float extraG = 0)
         {
             this.parent = parent;
-            if(parent != null)
-            {
+            if(parent != null) {
                 G = parent.G + moveCost + extraG;
-            } else
-            {
+            } else {
                 G = extraG;
             }
         }
