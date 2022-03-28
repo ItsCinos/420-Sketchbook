@@ -25,8 +25,7 @@ public class GridController : MonoBehaviour
         }
 
         singleton = this;
-        //DontDestroyOnLoad(gameObject);
-        
+        //DontDestroyOnLoad(gameObject);        
 
         MakeGrid();
     }
