@@ -37,7 +37,7 @@ public class GridController : MonoBehaviour
 
 
     void MakeGrid() {
-        int size = 19;
+        int size = 190;
         cubes = new TerrainCube[size, size];
 
         for(int x = 0; x < size; x++) {

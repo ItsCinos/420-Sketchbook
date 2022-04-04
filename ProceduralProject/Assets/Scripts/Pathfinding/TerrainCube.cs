@@ -36,7 +36,7 @@ public class TerrainCube : MonoBehaviour
         UpdateArt();
     }
 
-
+    /*
     void OnMouseDown()
     {
         // changes this TerrainCube's state: (wall/slime/none)
@@ -50,7 +50,7 @@ public class TerrainCube : MonoBehaviour
         // rebuild our array of nodes:
         if(GridController.singleton) GridController.singleton.MakeNodes();
 
-    }
+    }*/
 
     void UpdateArt()
     {
