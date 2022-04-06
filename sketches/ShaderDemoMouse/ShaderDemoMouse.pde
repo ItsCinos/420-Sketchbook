@@ -13,10 +13,6 @@ void setup(){
 void draw(){
   //background(100);
   
-  pushMatrix();
-  translate(mouseX, mouseY);
-  scale(.25);
-  image(img, mouseX, mouseY);
-  popMatrix();
+  shader.set("mouse", mouseX/(float)width, 1-mouseY/(float)height);
   filter(shader);
 }

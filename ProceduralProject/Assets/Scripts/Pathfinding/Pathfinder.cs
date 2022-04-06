@@ -97,9 +97,9 @@ public static class Pathfinder
                         // if this path to neighbor has lower G
                         // than previous path to neighbor
                         float dis = (neighbor.position - current.position).magnitude;
-                        if(current.G + neighbor.moveCost < neighbor.G)
+                        if(current.G + neighbor.moveCost + dis < neighbor.G)
                         {
-                            neighbor.UpdateParentAndG(current, 0);
+                            neighbor.UpdateParentAndG(current, dis);
                         }
                     }
                 }
