@@ -52,6 +52,12 @@ public class TerrainCube : MonoBehaviour
 
     }*/
 
+    public void ChangeType(TerrainType type)
+    {
+        this.type = type;
+        UpdateArt();
+    }
+
     void UpdateArt()
     {
         bool isShowingWall = (type == TerrainType.Wall);

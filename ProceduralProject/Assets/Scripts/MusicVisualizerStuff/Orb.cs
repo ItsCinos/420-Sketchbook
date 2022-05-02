@@ -7,13 +7,14 @@ using UnityEngine;
 public class Orb : MonoBehaviour
 {
 
-    SimpleViz1 viz;
+    //SimpleViz1 viz;
+    SimpleViz2 viz;
     Rigidbody body;
 
 
     void Start()
     {
-        viz = SimpleViz1.viz;
+        viz = SimpleViz2.viz;
         GetComponent<MeshRenderer>().material.SetFloat("_TimeOffset", Random.Range(0, 2 * Mathf.PI));
         body = GetComponent<Rigidbody>();
     }

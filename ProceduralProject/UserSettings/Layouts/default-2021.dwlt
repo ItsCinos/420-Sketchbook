@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1412
     height: 1228
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 16
+  controlID: 31
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -385,7 +385,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 0
       collapsed: 0
-      displayed: 0
+      displayed: 1
       snapOffset: {x: -313.33337, y: -192.66663}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 3
@@ -501,9 +501,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -3.5372925, y: 8.798393, z: -6.9705486}
+    m_Target: {x: 0.52275085, y: 7.521724, z: -11.858446}
     speed: 2
-    m_Value: {x: -3.5372925, y: 8.798393, z: -6.9705486}
+    m_Value: {x: 0.52275085, y: 7.521724, z: -11.858446}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -550,20 +550,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.2879493, y: 0.13931832, z: -0.043505404, w: 0.94710475}
+    m_Target: {x: -0.33252138, y: -0.012508028, z: 0.006126554, w: -0.94365776}
     speed: 2
-    m_Value: {x: 0.28777316, y: 0.1392331, z: -0.043478794, w: 0.94652545}
+    m_Value: {x: -0.332313, y: -0.01250019, z: 0.006122715, w: -0.9430664}
   m_Size:
-    m_Target: 0.0021953445
+    m_Target: 1.2247449
     speed: 2
-    m_Value: 0.0021953445
+    m_Value: 1.2247449
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 0.26087087
-    m_SpeedNormalized: 0.13000044
+    m_Speed: 1.1004509
+    m_SpeedNormalized: 0.5500004
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -612,25 +612,25 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 6af6ffff
-      m_LastClickedID: -2454
-      m_ExpandedIDs: 6af6ffff40f8ffff2cfbffff
+      m_SelectedIDs: c05e0000
+      m_LastClickedID: 24256
+      m_ExpandedIDs: 2cf9ffff2cfbffffca5e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Orb(Clone)
-        m_OriginalName: Orb(Clone)
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -48172
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 8}
+        m_ClientGUIView: {fileID: 9}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -771,22 +771,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Shaders
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Shaders
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\sonic\Desktop\DAGD 420\420-Sketchbook\ProceduralProject
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 102}
-    m_SelectedIDs: f6590000
-    m_LastClickedID: 23030
-    m_ExpandedIDs: 00000000c4590000c6590000c8590000ca590000045a000000ca9a3b
+    scrollPos: {x: 0, y: 118}
+    m_SelectedIDs: 905e0000
+    m_LastClickedID: 24208
+    m_ExpandedIDs: 00000000625e0000645e0000665e0000685e0000905e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -814,7 +814,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c4590000c6590000c8590000ca590000
+    m_ExpandedIDs: 00000000625e0000645e0000665e0000685e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -841,8 +841,8 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c6230000ee5a000000000000205f0000
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c6230000ee5a0000205f000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

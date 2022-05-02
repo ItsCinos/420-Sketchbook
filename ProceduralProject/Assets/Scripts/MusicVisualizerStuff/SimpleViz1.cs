@@ -8,7 +8,7 @@ public class SimpleViz1 : MonoBehaviour
 {
     static public SimpleViz1 viz { get; private set; }
     
-    //public float lineLength = 500;
+    public float lineLength = 500;
     public float ringRadius = 500;
     public float ringHeight = 5;
 
@@ -72,7 +72,7 @@ public class SimpleViz1 : MonoBehaviour
             //orbs[i].position = new Vector3(0, i * orbHeight / numBands, 0);
 
             orbs[i].UpdateAudioData(bands[i] * 100);
-
+            
             avgAmp += bands[i]; // add to average
         }
         avgAmp /= numBands;
