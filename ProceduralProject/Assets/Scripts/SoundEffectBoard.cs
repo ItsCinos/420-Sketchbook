@@ -11,6 +11,7 @@ public class SoundEffectBoard : MonoBehaviour
     public AudioClip soundHit;
     public AudioClip soundDie;
     public AudioClip soundPunch;
+    public AudioClip soundReload;
 
     private AudioSource player;
 
@@ -44,5 +45,10 @@ public class SoundEffectBoard : MonoBehaviour
     public static void PlayPunch()
     {
         main.player.PlayOneShot(main.soundPunch);
+    }
+
+    public static void PlayReload()
+    {
+        main.player.PlayOneShot(main.soundReload);
     }
 }

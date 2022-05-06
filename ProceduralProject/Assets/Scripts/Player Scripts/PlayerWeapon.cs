@@ -62,10 +62,12 @@ public class PlayerWeapon : MonoBehaviour
             /// How many seconds left in this state
             /// </summary>
             float timeLeft = 3;
+            
 
             public Cooldown(float time)
             {
                 timeLeft = time;
+                SoundEffectBoard.PlayReload();
             }
             public override State Update()
             {
@@ -73,12 +75,15 @@ public class PlayerWeapon : MonoBehaviour
 
                 if (timeLeft <= 0) return new States.Regular();
 
+                
+
                 return null;
             }
 
             public override void OnEnd()
             {
                 weapon.roundsInClip = weapon.maxRoundsInClip;
+
             }
         }
     }
